@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		
 		float halfPlayerWidth = transform.localScale.x / 2f;
-		screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize - halfPlayerWidth;
+		screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize + halfPlayerWidth;
 	}
 	
 	// Update is called once per frame
@@ -23,11 +23,11 @@ public class PlayerController : MonoBehaviour {
 		transform.Translate (Vector2.right * velocity * Time.deltaTime);
 
 		if (transform.position.x < -screenHalfWidthInWorldUnits) {
-			transform.position = new Vector2 (-screenHalfWidthInWorldUnits, transform.position.y);
+			transform.position = new Vector2 (screenHalfWidthInWorldUnits, transform.position.y);
 		}
 
 		if (transform.position.x > screenHalfWidthInWorldUnits) {
-			transform.position = new Vector2 (screenHalfWidthInWorldUnits, transform.position.y);
+			transform.position = new Vector2 (-screenHalfWidthInWorldUnits, transform.position.y);
 		}
 
 	}
