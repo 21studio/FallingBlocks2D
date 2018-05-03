@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
 	public GameObject fallingBlockPrefab;
-	public float secondsBetweenSpawns = 1;
+	public Vector2 secondsBetweenSpawnsMinMax;
 	float nextSpawnTime;
 
 	public Vector2 spawnSizeMinMax;
@@ -23,6 +23,8 @@ public class Spawner : MonoBehaviour {
 	void Update () {
 
 		if (Time.time > nextSpawnTime) {
+			float secondsBetweenSpawns = Mathf.Lerp (secondsBetweenSpawnsMinMax.y, secondsBetweenSpawnsMinMax.x, Difficulty.GetDifficultyPercent());
+			print (secondsBetweenSpawns);
 			nextSpawnTime = Time.time + secondsBetweenSpawns;
 
 			float spawnAngle = Random.Range(-spawnAngleMax,spawnAngleMax);
