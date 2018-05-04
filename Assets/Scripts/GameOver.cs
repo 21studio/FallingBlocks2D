@@ -21,12 +21,16 @@ public class GameOver : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButton(0)) {
 				SceneManager.LoadScene (0);
 			}
+
+			if (Input.GetKeyDown("escape")) {
+            	Application.Quit();
+        	}
 		}
 	}
 
 	public void OnGameOver() {
 		gameOverScreen.SetActive (true);
 		secondsSurvivedUI.text = Mathf.RoundToInt(Time.timeSinceLevelLoad).ToString();
-		gameOver = true;
+		gameOver = true;		
 	}
 }
